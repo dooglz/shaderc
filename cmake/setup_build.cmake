@@ -43,7 +43,11 @@ if (ANDROID)
 find_host_package(PythonInterp 3 REQUIRED)
 find_host_package(BISON)
 else()
-find_package(PythonInterp 3 REQUIRED)
+  if(${CMAKE_VERSION} VERSION_LESS "3.12") 
+    find_package(PythonInterp 3 REQUIRED)
+  else()
+    find_package(Python3 REQUIRED)
+  endif()
 endif()
 
 
